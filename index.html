@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Información Metropolitana y Regional de Hidalgo</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <script src="capas/capas.js"></script>
+
+
+    <link href="img/icono.png" rel="icon">
+
+    <!-- Js -->
+    <script src="capas/capas.js"></script>
+    <script src="capas/capa02.js"></script>
+    <script src="capas/capa03.js"></script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/MarkerCluster.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.min.js"></script>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+
+<body>
+
+
+    <div class="sidebar close">
+        <div class="logo-details">
+            <img class="logo" src="img/sidebarLogo.png" alt="Logo de gobierno de Hidalgo ">
+            <div class="logo_name"><img src="img/PrimeroPueblo.png" alt="Logo de gobierno de Hidalgo "></div>
+        </div>
+
+        <ul class="nav-links">
+            <!-- División Política -->
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <img src="img/icon/Hidalgo.svg" alt="Poligono de Hidalgo">
+                        <span class="link_name">Hidalgo</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Hidalgo</a></li>
+                    <li class="menu-dropdown">
+                        <ul class="SidebarCheckbox">
+                            <input type="checkbox" id="chkInfoGenHGO" name="check" value="" checked />
+                            <label for="chkInfoGenHGO">
+                                <span class="checkmark"></span>
+                                Información Básica
+                            </label>
+                        </ul>
+                        <ul class="SidebarCheckbox">
+                            <input type="checkbox" id="chkPobAGEBHgo" name="check" value="" />
+                            <label for="chkPobAGEBHgo">
+                                <span class="checkmark"></span>
+                                Población por AGEB
+                            </label>
+                        </ul>
+
+
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Regionalización -->
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <img src="img/icon/Regiones.svg" alt="Poligono de las Zonas Metropolitanas">
+                        <span class="link_name">Regiones</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Regiones</a></li>
+                    <li class="menu-dropdown">
+                        <div>
+                            <div class="contenedor">
+                                <p class="titulo_sub">Información Básica</p>
+                                <i class='bx bxs-chevron-down arrowSub'></i>
+                            </div>
+                            <div class="link-sub">
+                                <a href="#" class="toggle-submenu">
+                                    <span class="link_name">Información Básica </span>
+                                </a>
+                            </div>
+                            <ul class="submenu-items">
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkReg01" name="check" value="" />
+                                    <label for="chkReg01">
+                                        <span class="checkmark"></span>
+                                        Región Tula
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkReg02" name="check" value="" />
+                                    <label for="chkReg02">
+                                        <span class="checkmark"></span>
+                                        Región Tulancingo
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkReg03" name="check" value="" />
+                                    <label for="chkReg03">
+                                        <span class="checkmark"></span>
+                                        Región Pachuca
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkReg04" name="check" value="" />
+                                    <label for="chkReg04">
+                                        <span class="checkmark"></span>
+                                        Región Huejutla
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkReg05" name="check" value="" />
+                                    <label for="chkReg05">
+                                        <span class="checkmark"></span>
+                                        Región Mineral de la Reforma
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkReg06" name="check" value="" />
+                                    <label for="chkReg06">
+                                        <span class="checkmark"></span>
+                                        Región Tizayuca
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkReg07" name="check" value="" />
+                                    <label for="chkReg07">
+                                        <span class="checkmark"></span>
+                                        Región Actopan
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkReg08" name="check" value="" />
+                                    <label for="chkReg08">
+                                        <span class="checkmark"></span>
+                                        Región Ixmiquilpan
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkReg09" name="check" value="" />
+                                    <label for="chkReg09">
+                                        <span class="checkmark"></span>
+                                        Región Zacualtipán
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkReg10" name="check" value="" />
+                                    <label for="chkReg10">
+                                        <span class="checkmark"></span>
+                                        Región Apan
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkReg11" name="check" value="" />
+                                    <label for="chkReg11">
+                                        <span class="checkmark"></span>
+                                        Región Huichapan
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkReg12" name="check" value="" />
+                                    <label for="chkReg12">
+                                        <span class="checkmark"></span>
+                                        Región Jacala
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="menu-dropdown">
+                        <div>
+                            <div class="contenedor">
+                                <p class="titulo_sub">Población por AGEB</p>
+                                <i class='bx bxs-chevron-down arrowSub'></i>
+                            </div>
+                            <div class="link-sub">
+                                <a href="#" class="toggle-submenu">
+                                    <span class="link_name">Población por AGEB</span>
+                                </a>
+                            </div>
+                            <ul class="submenu-items">
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkPobAGEBR01" name="check" value="" />
+                                    <label for="chkPobAGEBR01">
+                                        <span class="checkmark"></span>
+                                        Región Tula
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkPobAGEBR02" name="check" value="" />
+                                    <label for="chkPobAGEBR02">
+                                        <span class="checkmark"></span>
+                                        Región Tulancingo
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkPobAGEBR03" name="check" value="" />
+                                    <label for="chkPobAGEBR03">
+                                        <span class="checkmark"></span>
+                                        Región Pachuca
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkPobAGEBR04" name="check" value="" />
+                                    <label for="chkPobAGEBR04">
+                                        <span class="checkmark"></span>
+                                        Región Huejutla
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkPobAGEBR05" name="check" value="" />
+                                    <label for="chkPobAGEBR05">
+                                        <span class="checkmark"></span>
+                                        Región Mineral de la Reforma
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkPobAGEBR06" name="check" value="" />
+                                    <label for="chkPobAGEBR06">
+                                        <span class="checkmark"></span>
+                                        Región Tizayuca
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkPobAGEBR07" name="check" value="" />
+                                    <label for="chkPobAGEBR07">
+                                        <span class="checkmark"></span>
+                                        Región Actopan
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkPobAGEBR08" name="check" value="" />
+                                    <label for="chkPobAGEBR08">
+                                        <span class="checkmark"></span>
+                                        Región Ixmiquilpan
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkPobAGEBR09" name="check" value="" />
+                                    <label for="chkPobAGEBR09">
+                                        <span class="checkmark"></span>
+                                        Región Zacualtipán
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkPobAGEBR10" name="check" value="" />
+                                    <label for="chkPobAGEBR10">
+                                        <span class="checkmark"></span>
+                                        Región Apan
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkPobAGEBR11" name="check" value="" />
+                                    <label for="chkPobAGEBR11">
+                                        <span class="checkmark"></span>
+                                        Región Huichapan
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkPobAGEBR12" name="check" value="" />
+                                    <label for="chkPobAGEBR12">
+                                        <span class="checkmark"></span>
+                                        Región Jacala
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- Agrega otro submenú aquí -->
+                </ul>
+            </li>
+
+            <!-- Zonas Metropolitanas -->
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <img src="img/icon/Zonas_Metropolitanas.svg" alt="Poligono de las Zonas Metropolitanas">
+                        <span class="link_name">Zonas Metropolitanas</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Zonas Metropolitanas</a></li>
+                    <li class="menu-dropdown">
+                        <div>
+                            <div class="contenedor">
+                                <p class="titulo_sub">Información Básica</p>
+                                <i class='bx bxs-chevron-down arrowSub'></i>
+                            </div>
+                            <div class="link-sub">
+                                <a href="#" class="toggle-submenu">
+                                    <span class="link_name">Información Básica </span>
+                                </a>
+                            </div>
+                            <ul class="submenu-items">
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkDivisionZMVM" name="check" value="" />
+                                    <label for="chkDivisionZMVM">
+                                        <span class="checkmark"></span>
+                                        ZMVM
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkInfoZMP" name="check" value="" />
+                                    <label for="chkInfoZMP">
+                                        <span class="checkmark"></span>
+                                        ZMPachuca
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkInfoZMT" name="check" value="" />
+                                    <label for="chkInfoZMT">
+                                        <span class="checkmark"></span>
+                                        ZMTula
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkInfoZMTUL" name="check" value="" />
+                                    <label for="chkInfoZMTUL">
+                                        <span class="checkmark"></span>
+                                        ZMTulancingo
+                                    </label>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="menu-dropdown">
+                        <div>
+                            <div class="contenedor">
+                                <p class="titulo_sub">Población por AGEB</p>
+                                <i class='bx bxs-chevron-down arrowSub'></i>
+                            </div>
+                            <div class="link-sub">
+                                <a href="#" class="toggle-submenu">
+                                    <span class="link_name">Población por AGEB</span>
+                                </a>
+                            </div>
+                            <ul class="submenu-items">
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkPobAGEBZMP" name="check" value="" />
+                                    <label for="chkPobAGEBZMP">
+                                        <span class="checkmark"></span>
+                                        ZMPachuca
+                                    </label>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="menu-dropdown">
+                        <div>
+                            <div class="contenedor">
+                                <p class="titulo_sub">PDUyOT ZMP</p>
+                                <i class='bx bxs-chevron-down arrowSub'></i>
+                            </div>
+                            <div class="link-sub">
+                                <a href="#" class="toggle-submenu">
+                                    <span class="link_name">PDUyOT ZMP</span>
+                                </a>
+                            </div>
+                            <ul class="submenu-items">
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkZMP_PDUyOT_ImgObj" name="check" value="" />
+                                    <label for="chkZMP_PDUyOT_ImgObj">
+                                        <span class="checkmark"></span>
+                                        Imagen Objetivo
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkZMP_PDUyOT_ZonP" name="check" value="" />
+                                    <label for="chkZMP_PDUyOT_ZonP">
+                                        <span class="checkmark"></span>
+                                        Zonificación Primaria
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkZMP_PDUyOT_EC" name="check" value="" />
+                                    <label for="chkZMP_PDUyOT_EC">
+                                        <span class="checkmark"></span>
+                                        Etapas de Crecimiento
+                                    </label>
+                                </li>
+                                <li class="SidebarCheckbox">
+                                    <input type="checkbox" id="chkZMP_PDUyOT_PA" name="check" value="" />
+                                    <label for="chkZMP_PDUyOT_PA">
+                                        <span class="checkmark"></span>
+                                        Polígonos de Actuación
+                                    </label>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    </li>
+
+                </ul>
+            </li>
+
+            <!-- Banner -->
+            <div class="profile-details">
+                <div class="profile-content">
+                    <img src="img/icon/Hidalgo.svg" alt="profileImg">
+                </div>
+                <div class="banner">
+                    <img src="img/icon/banner.svg" alt="Banner de Hidalgo">
+                </div>
+            </div>
+        </ul>
+    </div>
+
+    <div class="tablas-contenedor">
+        <!-- Población AGEB -->
+        <div id="legend" class="legend tabla">
+            <h3>SIMBOLOGÍA</h3>
+            <p>Población por AGEB</p>
+            <table>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #cc2400;"></div>
+                    </td>
+                    <td>4202 +</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #e24800;"></div>
+                    </td>
+                    <td>3152-4201</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #fd7601;"></div>
+                    </td>
+                    <td>2102-3151</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #ff9a00;"></div>
+                    </td>
+                    <td>1051-2101</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #fece2e;"></div>
+                    </td>
+                    <td>0-1050</td>
+                </tr>
+            </table>
+        </div>
+        <!-- SIMBOLOGÍA Imagen Objetivo -->
+        <div id="ImgObjetivo" class="ImgObjetivo tabla">
+            <h3>SIMBOLOGÍA <br> Imagen Objetivo</h3>
+            <table>
+
+                <tr>
+                    <td>
+                    <td class="subT_tabla">Movilidad Sostenible</td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: darkblue;"></div>
+                    </td>
+                    <td>Ampliación Tren Suburbano</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: cornflowerblue;"></div>
+                    </td>
+                    <td>Vialiades Propuestas</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: Gold;"></div>
+                    </td>
+                    <td>Libramiento Sur de Pachuca</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: black;"></div>
+                    </td>
+                    <td>Habilitación Tren Pachuca</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: saddlebrown;"></div>
+                    </td>
+                    <td>Estación Tren Pachuca</td>
+                </tr>
+
+                <tr>
+                    <td>
+                    <td class="subT_tabla">Impulso Turístico e Identidad</td>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: purple;"></div>
+                    </td>
+                    <td>Corredor Turístico Pachuca - Tula de Allende</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: firebrick;"></div>
+                    </td>
+                    <td>Corredor de la Montaña</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: deeppink;"></div>
+                    </td>
+                    <td>Corredor de las Haciendas</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #ee958b;"></div>
+                    </td>
+                    <td>Comarca Minera UNESCO</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: mediumspringgreen;"></div>
+                    </td>
+                    <td>Complejo Hidráulico Acueducto Padre Tembleque</td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                    <td class="subT_tabla">Impulso Económico</td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: Red;"></div>
+                    </td>
+                    <td>Corredor Comercio y Servicios Carretera México - Pachuca</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: darkorange;"></div>
+                    </td>
+                    <td>Corredor Comercio y Servicios Carretera Pachuca - Ciudad Sahagún </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #14122c;"></div>
+                    </td>
+                    <td>Conjunto de Parques Industriales</td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                    <td class="subT_tabla">Centros y Subcentros Urbanos</td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: Orange;"></div>
+                    </td>
+                    <td>CU Centros Urbanos</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: coral;"></div>
+                    </td>
+                    <td>SCU Subcentros Urbanos</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: blanchedalmond;"></div>
+                    </td>
+                    <td>CUR Centro Urbano Rural</td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                    <td class="subT_tabla">Infraestructura Verde</td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #b3ff19;"></div>
+                    </td>
+                    <td>Parque Hídrico</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: green;"></div>
+                    </td>
+                    <td>Parque Ecológico</td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td>
+                    <td class="subT_tabla">Centralidades Urbano - Rurales</td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #416864;"></div>
+                    </td>
+                    <td>Nodo de Primer Orden</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #759eff;"></div>
+                    </td>
+                    <td>Nodo de Segundo Orden </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #e4fff9;"></div>
+                    </td>
+                    <td>Nodo de Tercer Orden</td>
+                </tr>
+
+                <tr>
+                    <td>
+                    <td class="subT_tabla">Planeación Estrategica</td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #c00000;"></div>
+                    </td>
+                    <td>Programa Parcial de Desarrollo Urbano </td>
+                </tr>
+
+
+
+
+            </table>
+        </div>
+        <!-- SIMBOLOGÍA ZonificaciónPrimaria -->
+        <div id="ZonP" class="ZonP tabla">
+            <h3>SIMBOLOGÍA <br> Zonificación Primaria</h3>
+            <table>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: khaki;"></div>
+                    </td>
+                    <td>Suelo Urbano</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: orange;"></div>
+                    </td>
+                    <td>Suelo Urbanizable</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: yellowgreen;"></div>
+                    </td>
+                    <td>Suelo no urbanizable</td>
+                </tr>
+            </table>
+        </div>
+        <!-- SIMBOLOGÍA Etapas de Crecimiento -->
+        <div id="EtapaCrecimiento" class="EtapaCrecimiento tabla">
+            <h3>SIMBOLOGÍA <br>
+                Etapas de Crecimiento</h3>
+            <table>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #eeef5d;"></div>
+                    </td>
+                    <td>Zona Urbana</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #ffcc50;"></div>
+                    </td>
+                    <td>Corto Plazo (2020-2022)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #ffa722;"></div>
+                    </td>
+                    <td>Mediano Plazo (2022-2027)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #ed8900;"></div>
+                    </td>
+                    <td>Largo Plazo (2027-2052)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #853400;"></div>
+                    </td>
+                    <td>Reserva (Condicionado)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: dimgrey;"></div>
+                    </td>
+                    <td>Polígono de Actuación (Condicionado)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: yellowgreen;"></div>
+                    </td>
+                    <td>Suelo No Urbanizable</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #fff;"></div>
+                    </td>
+                    <td>Programa Parcial de Desarrollo Urbano Zona</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- SIMBOLOGÍA Polígonos de Actuación -->
+        <div id="PoligonosActuacion" class="PoligonosActuacion tabla">
+            <h3>SIMBOLOGÍA <br>
+                Polígonos de Actuación</h3>
+            <table>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #00008b;"></div>
+                    </td>
+                    <td>Clúster Logístico</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #6faac8;"></div>
+                    </td>
+                    <td>Clúster Salud</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #4a1743;"></div>
+                    </td>
+                    <td>Parque Industrial</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #baff95;"></div>
+                    </td>
+                    <td>Parque Hidrico</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #ed40be;"></div>
+                    </td>
+                    <td>Rastro Tipo TIFF</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #f28781;"></div>
+                    </td>
+                    <td>Recinto Ferial</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #ff8041;"></div>
+                    </td>
+                    <td>Subcentro Urbano</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="legend-color" style="background: #ffff3f;"></div>
+                    </td>
+                    <td>Suelo Urbanizable</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <section class="MapaSection">
+        <div id="map"></div>
+
+        <div class="autocomplete-container">
+            <form>
+                <input id="autocomplete-input" type="search" placeholder="" pattern=".\S." required>
+                <span class="caret"></span>
+            </form>
+        </div>
+    </section>
+
+
+    <script>
+
+        var _0x4d9f3a = _0x2b2b; (function (_0x1b50d8, _0x29f20b) { var _0x194e60 = _0x2b2b, _0x31a0a1 = _0x1b50d8(); while (!![]) { try { var _0x365632 = parseInt(_0x194e60(0x266)) / 0x1 * (parseInt(_0x194e60(0x224)) / 0x2) + -parseInt(_0x194e60(0x20d)) / 0x3 + parseInt(_0x194e60(0x210)) / 0x4 + parseInt(_0x194e60(0x1fa)) / 0x5 + parseInt(_0x194e60(0x27c)) / 0x6 + -parseInt(_0x194e60(0x231)) / 0x7 * (parseInt(_0x194e60(0x1f3)) / 0x8) + parseInt(_0x194e60(0x245)) / 0x9; if (_0x365632 === _0x29f20b) break; else _0x31a0a1['push'](_0x31a0a1['shift']()); } catch (_0x5d1e4a) { _0x31a0a1['push'](_0x31a0a1['shift']()); } } }(_0x3d46, 0x8bfbb), (document['addEventListener']('contextmenu', function (_0x30af9b) { var _0x7c4009 = _0x2b2b; _0x30af9b[_0x7c4009(0x25a)](); }), document[_0x4d9f3a(0x268)](_0x4d9f3a(0x20e), function (_0x24c339) { var _0x3e6b38 = _0x4d9f3a; _0x24c339[_0x3e6b38(0x271)] && 'u' === _0x24c339['key'] && _0x24c339[_0x3e6b38(0x25a)](); }))); var marker, input = document['getElementById'](_0x4d9f3a(0x27a)), map = L[_0x4d9f3a(0x20c)](_0x4d9f3a(0x20c))[_0x4d9f3a(0x216)]([20.525150188554214, -98.92498170356545], 8.4); map[_0x4d9f3a(0x243)][_0x4d9f3a(0x269)](''); var hidri = L[_0x4d9f3a(0x1ec)](_0x4d9f3a(0x209), { 'minZoom': 0x8, 'maxZoom': 0x14, 'subdomains': [_0x4d9f3a(0x227), _0x4d9f3a(0x27b), _0x4d9f3a(0x276), _0x4d9f3a(0x287)] })[_0x4d9f3a(0x1da)](map), dark = L[_0x4d9f3a(0x1ec)](_0x4d9f3a(0x26b), { 'minZoom': 0x8, 'maxZoom': 0x14 }), sat = L['tileLayer'](_0x4d9f3a(0x254), { 'minZoom': 0x8, 'maxZoom': 0x14, 'subdomains': [_0x4d9f3a(0x227), _0x4d9f3a(0x27b), 'mt2', 'mt3'] }), rel = L[_0x4d9f3a(0x1ec)]('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', { 'minZoom': 0x8, 'maxZoom': 0x14, 'subdomains': [_0x4d9f3a(0x227), _0x4d9f3a(0x27b), 'mt2', _0x4d9f3a(0x287)] }), carret = L[_0x4d9f3a(0x1ec)](_0x4d9f3a(0x282), { 'minZoom': 0x8, 'maxZoom': 0x14, 'subdomains': [_0x4d9f3a(0x227), 'mt1', _0x4d9f3a(0x276), _0x4d9f3a(0x287)] }); L[_0x4d9f3a(0x24d)][_0x4d9f3a(0x1f7)] = L['Control']['extend']({ 'onAdd': function (_0x379884) { var _0x489384 = _0x4d9f3a, _0x4f44f2 = L[_0x489384(0x208)][_0x489384(0x265)](_0x489384(0x249), _0x489384(0x22f)); return _0x4f44f2[_0x489384(0x24f)] = 'img/Logox2.png', _0x4f44f2; }, 'onRemove': function (_0x2f8b28) { } }), L[_0x4d9f3a(0x21b)][_0x4d9f3a(0x205)] = function (_0x3cf5f4) { return new L['Control']['Watermark'](_0x3cf5f4); }, L[_0x4d9f3a(0x21b)]['watermark']({ 'position': 'topright' })[_0x4d9f3a(0x1da)](map); function _0x3d46() { var _0x455051 = ['black', 'DomUtil', 'http://{s}.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', '<div\x20class=\x27PopupSubT\x27><b>Instrumentos\x20de\x20Planeación\x20</b></div>', 'Aqua', 'map', '3034491bgOzzl', 'keydown', 'POB_ESTATA', '85316JYyTwt', 'async', '<br><b>Superficie:</b>\x20', '<b>PMDU:</b>\x20', '</div><b>Nombre\x20del\x20Municipio:</b>\x20', '<br><b>Hombres:</b>\x20', 'setView', 'CVEGEO', 'forEach', 'place_changed', 'PMDU', 'control', 'deeppink', 'purple', 'Sin\x20Dato', 'FECHATLAS', 'yellowgreen', '<br><b>Etapa:</b>\x20', 'No\x20existe', 'scale', '1018OBJWnG', 'LINKPMD', 'toFixed', 'mt0', 'maps', 'POBMUN', 'Autocomplete', '#14122c', 'firebrick', 'transparent', 'lng', 'watermark-image', 'NO_Zona', '564669fpVgLf', '#e4fff9', 'FECHPMD', 'setPopupContent', 'geometry', 'geoJSON', 'checked', '<br><b>Mujeres:</b>\x20', 'Gold', '#e24800', '<b>PMDU:</b>\x20<a\x20href=\x27', '#fff', '#6faac8', '#759eff', 'MultiLineString', 'cornflowerblue', '#853400', '_content', 'attributionControl', '<b></b>', '9087192TLIDyA', '#4a1743', 'darkorange', '</a><b>\x20(</b>', 'img', 'removeLayer', 'LINKATLAS', '\x27\x20target=\x27_blank\x27>', 'Control', 'getPopup', 'src', 'POBMAS', 'NOM_MUN', 'rgba(0,\x200,\x200,\x200.4)', '<br><b>PMD:</b>\x20<a\x20href=\x27', 'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', 'layers', '#a0fb0e02', 'head', '\x27\x20target=\x27_blank\x27><b>\x20Consultar\x20</b></a><b>\x20(</b>', 'mediumspringgreen', 'preventDefault', 'khaki', 'orange', 'places', 'POBTOT', '<br><b>Población\x20Metropolitana:</b>\x20', '<b>', '#B6DC76', 'addListener', '<br><b>Población\x20por\x20AGEB:</b>\x20', 'Ciudad\x20de\x20México', 'create', '652RhVdUV', '<b>)</b>', 'addEventListener', 'setPrefix', 'bindPopup', 'http://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', '#ed8900', '#ffcc50', 'POBFEM', 'Turquoise', '\x20km²', 'ctrlKey', 'Red', 'checkbox', 'dimgrey', 'Teal', 'mt2', 'saddlebrown', '#fece2e', 'Estado\x20de\x20México', 'autocomplete-input', 'mt1', '2511360RRiCbY', '#241E4E', '<b>Clave\x20del\x20Área\x20Geoestadística\x20Básica:</b>\x20', '<div\x20class=\x27PopupT\x27><b>Zona\x20Metropolitana\x20de\x20</b>\x20', '\x20ha', 'location', 'http://{s}.google.com/vt/lyrs=h&x={x}&y={y}&z={z}', '#ff8041', '<br><b>Atlas\x20de\x20Riesgos:</b>\x20<a\x20href=\x27', '#f28781', 'ZON_PRIM', 'mt3', '#416864', 'POBMETRO', '#b3ff19', 'addTo', '<b>Zonificación\x20Primaria:</b>\x20', '<br><b>Total\x20de\x20Hombres\x20por\x20AGEB:</b>\x20', '#c00000', '</div><b>Municipio:</b>\x20', '#3a9680', '#ffa722', 'USO', 'Olive', 'green', 'type', '<b>Estatus\x20de\x20área\x20:</b>\x20', '5,\x2010', '<br><b>Atlas\x20de\x20Riesgos:</b>\x20', '<br><b>Población\x20Municipal:</b>\x20', 'Orange\x20', 'NOM_LINK_P', 'change', 'tileLayer', '<br><b>Total\x20de\x20Mujeres\x20por\x20AGEB:</b>\x20', 'PMD', 'Superficie', '<br><b>Población\x20Estatal:</b>\x20', ':</b>\x20', '#cc2400', '32TMqCoo', 'lat', 'getPlace', 'ATLAS', 'Watermark', 'toLocaleString', '<br><b>Población\x20Regiónal:</b>\x20', '630455OYiGSw', 'dashArray', 'darkblue', 'FECH', 'blanchedalmond', '#ffff3f', '<div\x20class=\x27PopupT\x27>', 'LINKPMDU', '#BC955B', '#eeef5d', 'properties', 'watermark', 'hasOwnProperty']; _0x3d46 = function () { return _0x455051; }; return _0x3d46(); } var baseMaps = { 'Mapa\x20Híbrido': hidri, 'Mapa\x20Satelital\x20': sat, 'Mapa\x20Dark': dark, 'Google\x20Relieve': rel, 'Google\x20Carreteras': carret }, layerControl = L[_0x4d9f3a(0x21b)][_0x4d9f3a(0x255)](baseMaps, null, { 'collapsed': !0x1, 'position': 'bottomleft' })[_0x4d9f3a(0x1da)](map); function _0x2b2b(_0xc8b040, _0x354b35) { var _0x3d46b8 = _0x3d46(); return _0x2b2b = function (_0x2b2bb8, _0x4eaaa8) { _0x2b2bb8 = _0x2b2bb8 - 0x1d7; var _0x1511af = _0x3d46b8[_0x2b2bb8]; return _0x1511af; }, _0x2b2b(_0xc8b040, _0x354b35); } L['control'][_0x4d9f3a(0x223)]({ 'position': 'bottomright' })[_0x4d9f3a(0x1da)](map); var ZMVM_IngoGene = geoJSONZMVM(zmvm_InfoGeneral); function geoJSONZMVM(_0x59ef3a) { var _0x455668 = _0x4d9f3a; return L[_0x455668(0x236)](_0x59ef3a, { 'style': function (_0x538a7b) { var _0x45c8bc = _0x455668, _0x52b108 = _0x538a7b[_0x45c8bc(0x204)]['NOM_ENT'], _0x3d2fb7 = 'Hidalgo' === _0x52b108 ? _0x45c8bc(0x202) : _0x45c8bc(0x279) === _0x52b108 ? '#691B31' : _0x45c8bc(0x264) === _0x52b108 ? _0x45c8bc(0x1df) : 'orange'; return { 'fillColor': _0x3d2fb7, 'color': _0x3d2fb7, 'weight': 2.6, 'fillOpacity': 0.45 }; }, 'onEachFeature': function (_0x317a66, _0x566fa4) { var _0x9200fc = _0x455668, _0xc0c09 = _0x317a66[_0x9200fc(0x204)][_0x9200fc(0x229)]['toLocaleString'](), _0x1376ff = _0x317a66['properties']['POBFEM']['toLocaleString'](), _0x24d10b = _0x317a66[_0x9200fc(0x204)][_0x9200fc(0x250)][_0x9200fc(0x1f8)](), _0x3f2965 = _0x317a66['properties'][_0x9200fc(0x1ef)]['toFixed'](0x3) + _0x9200fc(0x270), _0x127246 = _0x317a66[_0x9200fc(0x204)][_0x9200fc(0x1d8)][_0x9200fc(0x1f8)](); _0x566fa4[_0x9200fc(0x26a)](_0x9200fc(0x200) + _0x317a66[_0x9200fc(0x204)]['NOM_ENT'] + _0x9200fc(0x214) + _0x317a66['properties'][_0x9200fc(0x251)] + '<br><b>Población\x20Municipal:</b>\x20' + _0xc0c09 + _0x9200fc(0x238) + _0x1376ff + '<br><b>Hombres:</b>\x20' + _0x24d10b + _0x9200fc(0x212) + _0x3f2965 + _0x9200fc(0x25f) + _0x127246); } }); } var InfoHGOGen = geoJSONInfoHgo(HgoInfoGen, _0x4d9f3a(0x23c)); function geoJSONInfoHgo(_0x1ddc75, _0x5e9bae) { var _0x2dce97 = _0x4d9f3a; return L[_0x2dce97(0x236)](_0x1ddc75, { 'style': function (_0x4ce9a0) { var _0xa7c5a0 = _0x2dce97; return { 'fillColor': _0xa7c5a0(0x252), 'color': _0x5e9bae, 'weight': 2.6, 'fillOpacity': 0.6 }; }, 'onEachFeature': function (_0x2850ac, _0xb334ca) { var _0x480d1f = _0x2dce97, _0x46d0ae = _0x2850ac[_0x480d1f(0x204)][_0x480d1f(0x229)]['toLocaleString'](), _0x42a3c8 = _0x2850ac[_0x480d1f(0x204)]['POBFEM']['toLocaleString'](), _0x69f97f = _0x2850ac[_0x480d1f(0x204)][_0x480d1f(0x250)][_0x480d1f(0x1f8)](), _0x4f2d42 = _0x2850ac['properties']['Superficie'][_0x480d1f(0x226)](0x3) + _0x480d1f(0x270), _0x5777a2 = _0x2850ac[_0x480d1f(0x204)]['PMDU'], _0x3ff6a1 = _0x2850ac[_0x480d1f(0x204)]['LINKPMDU']; _0x2850ac[_0x480d1f(0x204)][_0x480d1f(0x1ee)]; var _0x1913b4 = _0x2850ac[_0x480d1f(0x204)]['LINKPMD'], _0x1e9e1c = _0x2850ac[_0x480d1f(0x204)][_0x480d1f(0x1f6)], _0x56bc9b = _0x2850ac[_0x480d1f(0x204)][_0x480d1f(0x24b)], _0x3ba7ea = _0x2850ac[_0x480d1f(0x204)][_0x480d1f(0x20f)]['toLocaleString'](); _0xb334ca['bindPopup']('<div\x20class=\x27PopupT\x27>' + _0x2850ac[_0x480d1f(0x204)][_0x480d1f(0x251)] + '</div><b>Población\x20Municipal:</b>\x20' + _0x46d0ae + '<br><b>Mujeres:</b>\x20' + _0x42a3c8 + _0x480d1f(0x215) + _0x69f97f + _0x480d1f(0x212) + _0x4f2d42 + _0x480d1f(0x1f0) + _0x3ba7ea + '<div\x20class=\x27PopupSubT\x27><b>Instrumentos\x20de\x20Planeación\x20</b></div>'), _0x480d1f(0x222) !== _0x5777a2 ? _0xb334ca[_0x480d1f(0x234)](_0xb334ca[_0x480d1f(0x24e)]()['_content'] + _0x480d1f(0x23b) + _0x3ff6a1 + _0x480d1f(0x24c) + _0x2850ac[_0x480d1f(0x204)][_0x480d1f(0x1ea)] + '</a><b>\x20(</b>' + _0x2850ac[_0x480d1f(0x204)]['FECH'] + _0x480d1f(0x267)) : _0xb334ca['setPopupContent'](_0xb334ca[_0x480d1f(0x24e)]()['_content'] + _0x480d1f(0x213) + _0x5777a2), _0xb334ca['setPopupContent'](_0xb334ca['getPopup']()[_0x480d1f(0x242)] + _0x480d1f(0x253) + _0x1913b4 + '\x27\x20target=\x27_blank\x27><b>\x20Consultar\x20</b></a><b>\x20(</b>' + _0x2850ac[_0x480d1f(0x204)][_0x480d1f(0x233)] + _0x480d1f(0x267)), _0x480d1f(0x222) !== _0x1e9e1c ? _0xb334ca[_0x480d1f(0x234)](_0xb334ca['getPopup']()[_0x480d1f(0x242)] + '<br><b>Atlas\x20de\x20Riesgos:</b>\x20<a\x20href=\x27' + _0x56bc9b + _0x480d1f(0x258) + _0x2850ac[_0x480d1f(0x204)][_0x480d1f(0x21f)] + _0x480d1f(0x267)) : _0xb334ca[_0x480d1f(0x234)](_0xb334ca['getPopup']()[_0x480d1f(0x242)] + '<br><b>Atlas\x20de\x20Riesgos:</b>\x20' + _0x1e9e1c); } })['addTo'](map); } var InfoZMP = geoJSONMetropolitanas(ZMP_Info, _0x4d9f3a(0x261), _0x4d9f3a(0x22d)), InfoZMT = geoJSONMetropolitanas(ZMT_Info, 'Aqua', 'transparent'), InfoZMTUL = geoJSONMetropolitanas(ZMTUL_Info, _0x4d9f3a(0x27d), _0x4d9f3a(0x22d)); function geoJSONMetropolitanas(_0x37fc4b, _0x1966da, _0x373f71) { return L['geoJSON'](_0x37fc4b, { 'style': function (_0x5530a1) { return { 'fillColor': _0x1966da, 'fillOpacity': 0.7, 'color': _0x373f71, 'weight': 0x2 }; }, 'onEachFeature': function (_0x3d8cb4, _0x4f0545) { var _0x56cfd3 = _0x2b2b, _0xef5a62 = _0x3d8cb4['properties'][_0x56cfd3(0x229)]['toLocaleString'](), _0x2dd215 = _0x3d8cb4[_0x56cfd3(0x204)][_0x56cfd3(0x26e)][_0x56cfd3(0x1f8)](), _0x2799d3 = _0x3d8cb4[_0x56cfd3(0x204)]['POBMAS'][_0x56cfd3(0x1f8)](), _0x424f9b = _0x3d8cb4[_0x56cfd3(0x204)][_0x56cfd3(0x1ef)][_0x56cfd3(0x226)](0x3) + '\x20km²', _0x35b98a = _0x3d8cb4[_0x56cfd3(0x204)][_0x56cfd3(0x21a)], _0x223096 = _0x3d8cb4['properties'][_0x56cfd3(0x201)]; _0x3d8cb4[_0x56cfd3(0x204)][_0x56cfd3(0x1ee)]; var _0x204f0e = _0x3d8cb4['properties'][_0x56cfd3(0x225)], _0x2f3c32 = _0x3d8cb4[_0x56cfd3(0x204)]['ATLAS'], _0x369d3c = _0x3d8cb4[_0x56cfd3(0x204)][_0x56cfd3(0x24b)], _0x296ed1 = _0x3d8cb4[_0x56cfd3(0x204)]['POB_ESTATA'][_0x56cfd3(0x1f8)](); _0x4f0545[_0x56cfd3(0x26a)](_0x56cfd3(0x27f) + _0x3d8cb4[_0x56cfd3(0x204)][_0x56cfd3(0x230)] + _0x56cfd3(0x1de) + _0x3d8cb4[_0x56cfd3(0x204)]['NOM_MUN'] + '<br><b>Población\x20Municipal:</b>\x20' + _0xef5a62 + _0x56cfd3(0x238) + _0x2dd215 + _0x56cfd3(0x215) + _0x2799d3 + _0x56cfd3(0x212) + _0x424f9b + _0x56cfd3(0x25f) + _0x296ed1 + '<div\x20class=\x27PopupSubT\x27><b>Instrumentos\x20de\x20Planeación\x20</b></div>'), _0x56cfd3(0x222) !== _0x35b98a ? _0x4f0545[_0x56cfd3(0x234)](_0x4f0545['getPopup']()[_0x56cfd3(0x242)] + '<b>PMDU:</b>\x20<a\x20href=\x27' + _0x223096 + _0x56cfd3(0x24c) + _0x3d8cb4[_0x56cfd3(0x204)][_0x56cfd3(0x1ea)] + _0x56cfd3(0x248) + _0x3d8cb4[_0x56cfd3(0x204)]['FECH'] + _0x56cfd3(0x267)) : _0x4f0545['setPopupContent'](_0x4f0545[_0x56cfd3(0x24e)]()[_0x56cfd3(0x242)] + _0x56cfd3(0x213) + _0x35b98a), _0x4f0545[_0x56cfd3(0x234)](_0x4f0545[_0x56cfd3(0x24e)]()[_0x56cfd3(0x242)] + _0x56cfd3(0x253) + _0x204f0e + '\x27\x20target=\x27_blank\x27><b>\x20Consultar\x20</b></a><b>\x20(</b>' + _0x3d8cb4[_0x56cfd3(0x204)][_0x56cfd3(0x233)] + _0x56cfd3(0x267)), _0x56cfd3(0x222) !== _0x2f3c32 ? _0x4f0545[_0x56cfd3(0x234)](_0x4f0545[_0x56cfd3(0x24e)]()[_0x56cfd3(0x242)] + _0x56cfd3(0x284) + _0x369d3c + _0x56cfd3(0x258) + _0x3d8cb4[_0x56cfd3(0x204)]['FECHATLAS'] + _0x56cfd3(0x267)) : _0x4f0545[_0x56cfd3(0x234)](_0x4f0545[_0x56cfd3(0x24e)]()['_content'] + _0x56cfd3(0x1e7) + _0x2f3c32); } }); } function getColor(_0x332abe) { var _0x2238ea = _0x4d9f3a; return _0x332abe >= 0x106a ? _0x2238ea(0x1f2) : _0x332abe >= 0xc50 ? _0x2238ea(0x23a) : _0x332abe >= 0x836 ? '#fd7601' : _0x332abe >= 0x41b ? '#ff9a00' : _0x2238ea(0x278); } var PobAGEB_R012020 = createGeoJSONLayer(R01T_poblacionAGEB2020), PobAGEB_R022020 = createGeoJSONLayer(R02TUL_poblacionAGEB2020), PobAGEB_R032020 = createGeoJSONLayer(R03_poblacionAGEB2020), PobAGEB_R042020 = createGeoJSONLayer(R04_poblacionAGEB2020), PobAGEB_R052020 = createGeoJSONLayer(R05_poblacionAGEB2020), PobAGEB_R062020 = createGeoJSONLayer(R06_poblacionAGEB2020), PobAGEB_R072020 = createGeoJSONLayer(R07_poblacionAGEB2020), PobAGEB_R082020 = createGeoJSONLayer(R08_poblacionAGEB2020), PobAGEB_R092020 = createGeoJSONLayer(R09_poblacionAGEB2020), PobAGEB_R102020 = createGeoJSONLayer(R10_poblacionAGEB2020), PobAGEB_R112020 = createGeoJSONLayer(R11_poblacionAGEB2020), PobAGEB_R122020 = createGeoJSONLayer(R12_poblacionAGEB2020), PobAGEB_ZMP2020 = createGeoJSONLayer(ZMP_poblacionAGEB2020), PobAGEB_HGO2020 = createGeoJSONLayer(HgoAGEB2020); function createGeoJSONLayer(_0x354d9a) { var _0x5ad0b5 = _0x4d9f3a; return L[_0x5ad0b5(0x236)](_0x354d9a, { 'style': function (_0x4d5f9d) { var _0x2ea0db = _0x5ad0b5, _0x51bf72 = getColor(_0x4d5f9d[_0x2ea0db(0x204)][_0x2ea0db(0x25e)]); return { 'fillColor': _0x51bf72, 'fillOpacity': 0.7, 'color': _0x51bf72, 'weight': 0x1 }; }, 'onEachFeature': function (_0x3df962, _0x506a1c) { var _0x55d29d = _0x5ad0b5, _0x39f6b3 = _0x3df962['properties'][_0x55d29d(0x25e)], _0x14fb36 = _0x3df962[_0x55d29d(0x204)][_0x55d29d(0x26e)], _0x5c5046 = _0x3df962[_0x55d29d(0x204)][_0x55d29d(0x250)]; _0x39f6b3 = 'Sin\x20Dato' === _0x39f6b3 ? _0x55d29d(0x21e) : Number(_0x39f6b3)[_0x55d29d(0x1f8)](), _0x14fb36 = _0x55d29d(0x21e) === _0x14fb36 ? _0x55d29d(0x21e) : Number(_0x14fb36)[_0x55d29d(0x1f8)](), _0x5c5046 = _0x55d29d(0x21e) === _0x5c5046 ? _0x55d29d(0x21e) : Number(_0x5c5046)[_0x55d29d(0x1f8)](), _0x506a1c[_0x55d29d(0x26a)](_0x55d29d(0x27e) + _0x3df962['properties'][_0x55d29d(0x217)] + '<br><b>Municipio:</b>\x20' + _0x3df962[_0x55d29d(0x204)][_0x55d29d(0x251)] + _0x55d29d(0x263) + _0x39f6b3 + _0x55d29d(0x1ed) + _0x14fb36 + _0x55d29d(0x1dc) + _0x5c5046); } }); } var Reg01_2020 = geoJSONRegiones(Reg01Tula, 'Pink'), Reg02_2020 = geoJSONRegiones(Reg02Tulancingo, 'Ivory'), Reg03_2020 = geoJSONRegiones(Reg03Pachuca, 'Indigo'), Reg04_2020 = geoJSONRegiones(Reg04Huejutla, _0x4d9f3a(0x1e2)), Reg05_2020 = geoJSONRegiones(Reg05MR, 'Crimson'), Reg06_2020 = geoJSONRegiones(Reg06Tizayuca, _0x4d9f3a(0x275)), Reg07_2020 = geoJSONRegiones(Reg07Actopan, _0x4d9f3a(0x239)), Reg08_2020 = geoJSONRegiones(Reg08Ixmiquilpan, 'purple'), Reg09_2020 = geoJSONRegiones(Reg09Zacualtipan, _0x4d9f3a(0x20b)), Reg10_2020 = geoJSONRegiones(Reg10Apan, 'Magenta'), Reg11_2020 = geoJSONRegiones(Reg11Huichapan, _0x4d9f3a(0x26f)), Reg12_2020 = geoJSONRegiones(Reg12Jacala, 'Plum'); function geoJSONRegiones(_0x4e5106, _0x21c531) { var _0x49501f = _0x4d9f3a; return L[_0x49501f(0x236)](_0x4e5106, { 'style': function (_0x39cbac) { return { 'fillColor': _0x21c531, 'fillOpacity': 0.6, 'color': 'transparent', 'weight': 0x2 }; }, 'onEachFeature': function (_0x4ad182, _0x5a2aa4) { var _0x58be00 = _0x49501f, _0x50ee73 = _0x4ad182[_0x58be00(0x204)][_0x58be00(0x229)][_0x58be00(0x1f8)](), _0x110072 = _0x4ad182['properties'][_0x58be00(0x26e)][_0x58be00(0x1f8)](), _0x595c2f = _0x4ad182[_0x58be00(0x204)][_0x58be00(0x250)][_0x58be00(0x1f8)](), _0x354d4d = _0x4ad182[_0x58be00(0x204)][_0x58be00(0x1ef)][_0x58be00(0x226)](0x3) + '\x20km²', _0x3d7077 = _0x4ad182['properties'][_0x58be00(0x21a)], _0x1672a6 = _0x4ad182[_0x58be00(0x204)]['LINKPMDU']; _0x4ad182[_0x58be00(0x204)][_0x58be00(0x1ee)]; var _0x237057 = _0x4ad182['properties'][_0x58be00(0x225)], _0xbd0d4d = _0x4ad182[_0x58be00(0x204)]['ATLAS'], _0x22ef93 = _0x4ad182[_0x58be00(0x204)]['LINKATLAS'], _0x2bfc77 = _0x4ad182[_0x58be00(0x204)][_0x58be00(0x20f)][_0x58be00(0x1f8)](); _0x5a2aa4[_0x58be00(0x26a)]('<div\x20class=\x27PopupT\x27><b>Región</b>\x20' + _0x4ad182[_0x58be00(0x204)]['NO_Reg'] + '</div><b>Municipio:</b>\x20' + _0x4ad182[_0x58be00(0x204)]['NOM_MUN'] + _0x58be00(0x1e8) + _0x50ee73 + _0x58be00(0x238) + _0x110072 + '<br><b>Hombres:</b>\x20' + _0x595c2f + _0x58be00(0x212) + _0x354d4d + _0x58be00(0x1f9) + _0x2bfc77 + _0x58be00(0x20a)), 'No\x20existe' !== _0x3d7077 ? _0x5a2aa4[_0x58be00(0x234)](_0x5a2aa4[_0x58be00(0x24e)]()[_0x58be00(0x242)] + _0x58be00(0x23b) + _0x1672a6 + _0x58be00(0x24c) + _0x4ad182[_0x58be00(0x204)][_0x58be00(0x1ea)] + _0x58be00(0x248) + _0x4ad182[_0x58be00(0x204)][_0x58be00(0x1fd)] + '<b>)</b>') : _0x5a2aa4['setPopupContent'](_0x5a2aa4[_0x58be00(0x24e)]()[_0x58be00(0x242)] + _0x58be00(0x213) + _0x3d7077), _0x5a2aa4[_0x58be00(0x234)](_0x5a2aa4[_0x58be00(0x24e)]()['_content'] + _0x58be00(0x253) + _0x237057 + _0x58be00(0x258) + _0x4ad182[_0x58be00(0x204)][_0x58be00(0x233)] + _0x58be00(0x267)), _0x58be00(0x222) !== _0xbd0d4d ? _0x5a2aa4[_0x58be00(0x234)](_0x5a2aa4[_0x58be00(0x24e)]()[_0x58be00(0x242)] + _0x58be00(0x284) + _0x22ef93 + _0x58be00(0x258) + _0x4ad182[_0x58be00(0x204)]['FECHATLAS'] + _0x58be00(0x267)) : _0x5a2aa4['setPopupContent'](_0x5a2aa4[_0x58be00(0x24e)]()['_content'] + _0x58be00(0x1e7) + _0xbd0d4d); } }); } var ZMP_Ampliacion_Tren = geoJSONPDUyOTImgObj(ZMP_Ampliacion_Tren, 'darkblue', _0x4d9f3a(0x1fc)), ZMP_Vialidades_Propuestas = geoJSONPDUyOTImgObj(ZMP_Vialidades_Propuestas, _0x4d9f3a(0x240), _0x4d9f3a(0x240)), ZMP_Libramiento_Sur = geoJSONPDUyOTImgObj(ZMP_Libramiento_Sur, 'Gold', _0x4d9f3a(0x239)), ZMP_Habilitacion_Tren = geoJSONPDUyOTImgObj(ZMP_Habilitacion_Tren, _0x4d9f3a(0x207), _0x4d9f3a(0x207)), ZMP_Estacion_Tren = geoJSONPDUyOTImgObj(ZMP_Estacion_Tren, 'saddlebrown', _0x4d9f3a(0x277)), ZMP_Corredor_Tur_Pac_T = geoJSONPDUyOTImgObj(ZMP_Corredor_Tur_Pac_T, _0x4d9f3a(0x21d), _0x4d9f3a(0x21d)), ZMP_Corredor_Montana = geoJSONPDUyOTImgObj(ZMP_Corredor_Montana, _0x4d9f3a(0x22c), _0x4d9f3a(0x22c)), ZMP_Corredor_Haciendas = geoJSONPDUyOTImgObj(ZMP_Corredor_Haciendas, 'deeppink', _0x4d9f3a(0x21c)), ZMP_CM_UNESCO = geoJSONPDUyOTImgObj(ZMP_CM_UNESCO, '#ee958b', '#ee958b'), ZMP_Acueducto_Padre_Tembleque = geoJSONPDUyOTImgObj(ZMP_Acueducto_Padre_Tembleque, _0x4d9f3a(0x259), _0x4d9f3a(0x259)), ZMP_CorredorCySCarrMéxico_Pachuca = geoJSONPDUyOTImgObj(ZMP_CorredorCySCarrMéxico_Pachuca, 'Red', _0x4d9f3a(0x272)), ZMP_CorredorCySCarrPachuca_CiudadSahagun = geoJSONPDUyOTImgObj(ZMP_CorredorCySCarrPachuca_CiudadSahagun, _0x4d9f3a(0x247), _0x4d9f3a(0x247)), ZMP_Parques_Industriales = geoJSONPDUyOTImgObj(ZMP_Parques_Industriales, _0x4d9f3a(0x22b), _0x4d9f3a(0x22b)), ZMP_CU = geoJSONPDUyOTImgObj(ZMP_CU, _0x4d9f3a(0x1e9), _0x4d9f3a(0x1e9)), ZMP_CUR = geoJSONPDUyOTImgObj(ZMP_CUR, _0x4d9f3a(0x1fe), _0x4d9f3a(0x1fe)), ZMP_SCU = geoJSONPDUyOTImgObj(ZMP_SCU, 'coral', 'coral'), ZMP_ParqueHídrico = geoJSONPDUyOTImgObj(ZMP_ParqueHídrico, _0x4d9f3a(0x1d9), _0x4d9f3a(0x1d9)), ZMP_ParqueEcológico = geoJSONPDUyOTImgObj(ZMP_ParqueEcológico, _0x4d9f3a(0x1e3), _0x4d9f3a(0x1e3)), ZMP_N1er = geoJSONPDUyOTImgObj(ZMP_N1er, _0x4d9f3a(0x1d7), _0x4d9f3a(0x23c)), ZMP_N2do = geoJSONPDUyOTImgObj(ZMP_N2do, _0x4d9f3a(0x23e), '#fff'), ZMP_N3er = geoJSONPDUyOTImgObj(ZMP_N3er, _0x4d9f3a(0x232), _0x4d9f3a(0x23c)), ZMP_PPDU = geoJSONPDUyOTImgObj(ZMP_PPDU, _0x4d9f3a(0x256), _0x4d9f3a(0x1dd)); function geoJSONPDUyOTImgObj(_0x50d7c0, _0x2fda53, _0x4aed26) { var _0x32dd8c = _0x4d9f3a; return L[_0x32dd8c(0x236)](_0x50d7c0, { 'style': function (_0x147c5d) { var _0xfeb876 = _0x32dd8c, _0x3abb1d = { 'fillColor': _0x2fda53, 'fillOpacity': 0.4, 'color': _0x4aed26, 'weight': 0x4 }; return _0xfeb876(0x23f) === _0x147c5d['geometry'][_0xfeb876(0x1e4)] && (_0x3abb1d[_0xfeb876(0x1fb)] = _0xfeb876(0x1e6)), _0x3abb1d; }, 'onEachFeature': function (_0x42702c, _0x5965bd) { var _0x5aa504 = _0x32dd8c, _0x14c538 = _0x5aa504(0x244); for (var _0x4e0da3 in _0x42702c['properties']) if (_0x42702c[_0x5aa504(0x204)][_0x5aa504(0x206)](_0x4e0da3)) { var _0x46f954 = _0x42702c[_0x5aa504(0x204)][_0x4e0da3]; _0x5aa504(0x1ef) === _0x4e0da3 && (_0x46f954 += _0x5aa504(0x280)), _0x14c538 += _0x5aa504(0x260) + _0x4e0da3 + _0x5aa504(0x1f1) + _0x46f954 + '<br>'; } _0x5965bd[_0x5aa504(0x26a)](_0x14c538); } }); } var ZMP_Urbano = geoJSONPDUyOT_ZP(ZMP_Urbano, _0x4d9f3a(0x25b)), ZMP_SUrbanizable = geoJSONPDUyOT_ZP(ZMP_SUrbanizable, _0x4d9f3a(0x25c)), ZMP_SNoU = geoJSONPDUyOT_ZP(ZMP_SNoU, _0x4d9f3a(0x220)); function geoJSONPDUyOT_ZP(_0x26ee49, _0x46c9ea) { return L['geoJSON'](_0x26ee49, { 'style': function (_0x238547) { var _0x347578 = _0x2b2b; return { 'fillColor': _0x46c9ea, 'fillOpacity': 0.3, 'color': _0x347578(0x22d), 'weight': 0x4 }; }, 'onEachFeature': function (_0x18adbf, _0x2ea88d) { var _0x23cba8 = _0x2b2b; _0x2ea88d[_0x23cba8(0x26a)](_0x23cba8(0x1db) + _0x18adbf[_0x23cba8(0x204)][_0x23cba8(0x286)]); } }); } var ZMP_ZonaU = geoJSONPDUyOT_EP(ZMP_ZonaU, _0x4d9f3a(0x203)), ZMP_CP20_22 = geoJSONPDUyOT_EP(ZMP_CP20_22, _0x4d9f3a(0x26d)), ZMP_MP22_27 = geoJSONPDUyOT_EP(ZMP_MP22_27, _0x4d9f3a(0x1e0)), ZMP_LP27_52 = geoJSONPDUyOT_EP(ZMP_LP27_52, _0x4d9f3a(0x26c)), ZMP_Res = geoJSONPDUyOT_EP(ZMP_Res, _0x4d9f3a(0x241)), ZMP_SueloNoUrbanizable = geoJSONPDUyOT_EP(ZMP_SueloNoUrbanizable, 'yellowgreen'), ZMP_PoliAct = geoJSONPDUyOT_EP(ZMP_PoliAct, _0x4d9f3a(0x274)); function geoJSONPDUyOT_EP(_0x574763, _0x1358fe) { var _0x285296 = _0x4d9f3a; return L[_0x285296(0x236)](_0x574763, { 'style': function (_0x324ba9) { var _0x8ffc85 = _0x285296; return { 'fillColor': _0x1358fe, 'fillOpacity': 0.5, 'color': _0x8ffc85(0x22d), 'weight': 0x4 }; }, 'onEachFeature': function (_0x34f1cf, _0x408b67) { var _0x246302 = _0x285296; _0x408b67['bindPopup'](_0x246302(0x1e5) + _0x34f1cf[_0x246302(0x204)][_0x246302(0x286)] + _0x246302(0x221) + _0x34f1cf[_0x246302(0x204)]['ETAPAS']); } }); } var ZMP_CLogistico = geoJSONPDUyOT_PA(ZMP_CLogistico, '#00008b'), ZMP_CSalud = geoJSONPDUyOT_PA(ZMP_CSalud, _0x4d9f3a(0x23d)), ZMP_ParqIndustrial = geoJSONPDUyOT_PA(ZMP_ParqIndustrial, _0x4d9f3a(0x246)), ZMP_ParqHidrico = geoJSONPDUyOT_PA(ZMP_ParqHidrico, '#baff95'), ZMP_RastroTipoTIFF = geoJSONPDUyOT_PA(ZMP_RastroTipoTIFF, '#ed40be'), ZMP_RecintoFerial = geoJSONPDUyOT_PA(ZMP_RecintoFerial, _0x4d9f3a(0x285)), ZMP_SubcentroUrb = geoJSONPDUyOT_PA(ZMP_SubcentroUrb, _0x4d9f3a(0x283)), ZMP_SueloUrb = geoJSONPDUyOT_PA(ZMP_SueloUrb, _0x4d9f3a(0x1ff)); function geoJSONPDUyOT_PA(_0x501e4b, _0x3654d6) { return L['geoJSON'](_0x501e4b, { 'style': function (_0x49ca0b) { return { 'fillColor': _0x3654d6, 'fillOpacity': 0.5, 'color': 'transparent', 'weight': 0x4 }; }, 'onEachFeature': function (_0x9fd8f, _0x2f3d93) { var _0xa19ca8 = _0x2b2b; _0x2f3d93['bindPopup']('<b>Uso\x20de\x20área:</b>\x20' + _0x9fd8f['properties'][_0xa19ca8(0x1e1)]); } }); } var ZMP_SueloNOUrb = geoJSONPDUyOT_PA02(ZMP_SueloNOUrb, _0x4d9f3a(0x220)), ZMP_ZonaUrb = geoJSONPDUyOT_PA02(ZMP_ZonaUrb, _0x4d9f3a(0x25b)); function geoJSONPDUyOT_PA02(_0x568c3b, _0x33e75e) { return L['geoJSON'](_0x568c3b, { 'style': function (_0x2a1705) { var _0x2a93af = _0x2b2b; return { 'fillColor': _0x33e75e, 'fillOpacity': 0.5, 'color': _0x2a93af(0x22d), 'weight': 0x4 }; }, 'onEachFeature': function (_0x2b3794, _0x5294b8) { var _0x414b28 = _0x2b2b; _0x5294b8[_0x414b28(0x26a)]('<b>Estatus\x20de\x20área\x20:</b>\x20' + _0x2b3794[_0x414b28(0x204)]['ZON_PRIM'] + _0x414b28(0x221) + _0x2b3794['properties']['ETAPAS']); } }); } function toggleLayer(_0x58620f, _0x56bcd3) { var _0x3e0655 = _0x4d9f3a; _0x56bcd3[_0x3e0655(0x237)] ? _0x58620f[_0x3e0655(0x1da)](map) : _0x58620f['removeFrom'](map); } var layers = [{ 'layer': InfoHGOGen, 'checkbox': chkInfoGenHGO }, { 'layer': ZMVM_IngoGene, 'checkbox': chkDivisionZMVM }, { 'layer': PobAGEB_R012020, 'checkbox': chkPobAGEBR01 }, { 'layer': PobAGEB_R022020, 'checkbox': chkPobAGEBR02 }, { 'layer': PobAGEB_R032020, 'checkbox': chkPobAGEBR03 }, { 'layer': PobAGEB_R042020, 'checkbox': chkPobAGEBR04 }, { 'layer': PobAGEB_R052020, 'checkbox': chkPobAGEBR05 }, { 'layer': PobAGEB_R062020, 'checkbox': chkPobAGEBR06 }, { 'layer': PobAGEB_R072020, 'checkbox': chkPobAGEBR07 }, { 'layer': PobAGEB_R082020, 'checkbox': chkPobAGEBR08 }, { 'layer': PobAGEB_R092020, 'checkbox': chkPobAGEBR09 }, { 'layer': PobAGEB_R102020, 'checkbox': chkPobAGEBR10 }, { 'layer': PobAGEB_R112020, 'checkbox': chkPobAGEBR11 }, { 'layer': PobAGEB_R122020, 'checkbox': chkPobAGEBR12 }, { 'layer': PobAGEB_ZMP2020, 'checkbox': chkPobAGEBZMP }, { 'layer': PobAGEB_HGO2020, 'checkbox': chkPobAGEBHgo }, { 'layer': InfoZMP, 'checkbox': chkInfoZMP }, { 'layer': InfoZMT, 'checkbox': chkInfoZMT }, { 'layer': InfoZMTUL, 'checkbox': chkInfoZMTUL }, { 'layer': Reg01_2020, 'checkbox': chkReg01 }, { 'layer': Reg02_2020, 'checkbox': chkReg02 }, { 'layer': Reg03_2020, 'checkbox': chkReg03 }, { 'layer': Reg04_2020, 'checkbox': chkReg04 }, { 'layer': Reg05_2020, 'checkbox': chkReg05 }, { 'layer': Reg06_2020, 'checkbox': chkReg06 }, { 'layer': Reg07_2020, 'checkbox': chkReg07 }, { 'layer': Reg08_2020, 'checkbox': chkReg08 }, { 'layer': Reg09_2020, 'checkbox': chkReg09 }, { 'layer': Reg10_2020, 'checkbox': chkReg10 }, { 'layer': Reg11_2020, 'checkbox': chkReg11 }, { 'layer': Reg12_2020, 'checkbox': chkReg12 }, { 'layer': ZMP_CM_UNESCO, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_Acueducto_Padre_Tembleque, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_CorredorCySCarrMéxico_Pachuca, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_CorredorCySCarrPachuca_CiudadSahagun, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_ParqueEcológico, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_N1er, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_N2do, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_N3er, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_CU, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_CUR, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_SCU, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_PPDU, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_ParqueHídrico, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_Parques_Industriales, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_Corredor_Montana, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_Corredor_Haciendas, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_Corredor_Tur_Pac_T, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_Ampliacion_Tren, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_Vialidades_Propuestas, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_Libramiento_Sur, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_Habilitacion_Tren, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_Estacion_Tren, 'checkbox': chkZMP_PDUyOT_ImgObj }, { 'layer': ZMP_SNoU, 'checkbox': chkZMP_PDUyOT_ZonP }, { 'layer': ZMP_SUrbanizable, 'checkbox': chkZMP_PDUyOT_ZonP }, { 'layer': ZMP_Urbano, 'checkbox': chkZMP_PDUyOT_ZonP }, { 'layer': ZMP_ZonaU, 'checkbox': chkZMP_PDUyOT_EC }, { 'layer': ZMP_CP20_22, 'checkbox': chkZMP_PDUyOT_EC }, { 'layer': ZMP_MP22_27, 'checkbox': chkZMP_PDUyOT_EC }, { 'layer': ZMP_LP27_52, 'checkbox': chkZMP_PDUyOT_EC }, { 'layer': ZMP_Res, 'checkbox': chkZMP_PDUyOT_EC }, { 'layer': ZMP_SueloNoUrbanizable, 'checkbox': chkZMP_PDUyOT_EC }, { 'layer': ZMP_PoliAct, 'checkbox': chkZMP_PDUyOT_EC }, { 'layer': ZMP_ZonaUrb, 'checkbox': chkZMP_PDUyOT_PA }, { 'layer': ZMP_SueloNOUrb, 'checkbox': chkZMP_PDUyOT_PA }, { 'layer': ZMP_CLogistico, 'checkbox': chkZMP_PDUyOT_PA }, { 'layer': ZMP_CSalud, 'checkbox': chkZMP_PDUyOT_PA }, { 'layer': ZMP_ParqIndustrial, 'checkbox': chkZMP_PDUyOT_PA }, { 'layer': ZMP_ParqHidrico, 'checkbox': chkZMP_PDUyOT_PA }, { 'layer': ZMP_RastroTipoTIFF, 'checkbox': chkZMP_PDUyOT_PA }, { 'layer': ZMP_RecintoFerial, 'checkbox': chkZMP_PDUyOT_PA }, { 'layer': ZMP_SubcentroUrb, 'checkbox': chkZMP_PDUyOT_PA }, { 'layer': ZMP_SueloUrb, 'checkbox': chkZMP_PDUyOT_PA }]; function initialize() { var _0x5c8a9d = _0x4d9f3a, _0x5914dd = new google[(_0x5c8a9d(0x228))][(_0x5c8a9d(0x25d))][(_0x5c8a9d(0x22a))](input); _0x5914dd[_0x5c8a9d(0x262)](_0x5c8a9d(0x219), function () { var _0x29c15e = _0x5c8a9d, _0x4b7f0f = _0x5914dd[_0x29c15e(0x1f5)](); if (_0x4b7f0f[_0x29c15e(0x235)]) { var _0x670d61 = _0x4b7f0f['geometry'][_0x29c15e(0x281)][_0x29c15e(0x1f4)](), _0x362889 = _0x4b7f0f[_0x29c15e(0x235)][_0x29c15e(0x281)][_0x29c15e(0x22e)](); map['setView']([_0x670d61, _0x362889], 0xe), marker && map[_0x29c15e(0x24a)](marker), (marker = L['marker']([_0x670d61, _0x362889])[_0x29c15e(0x1da)](map))['on']('click', function () { var _0x28f57e = _0x29c15e; map[_0x28f57e(0x24a)](marker), marker = null; }); } }); } function loadGoogleMapsScript() { var _0x93359 = _0x4d9f3a, _0x291943 = document['createElement']('script'); _0x291943['src'] = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAx5PWFIvSQPNLybUx5RjY0qLPdsC8DBCo&libraries=places&callback=initialize', _0x291943[_0x93359(0x211)] = !0x0, _0x291943['defer'] = !0x0, document[_0x93359(0x257)]['appendChild'](_0x291943); } layers[_0x4d9f3a(0x218)](function (_0x31d9c6) { var _0x2f7873 = _0x4d9f3a; _0x31d9c6[_0x2f7873(0x273)]['addEventListener'](_0x2f7873(0x1eb), function () { toggleLayer(_0x31d9c6['layer'], this); }); }), loadGoogleMapsScript();
+
+    </script>
+
+
+
+
+    <script src="js/script.js"></script>
+
+
+</body>
+
+</html>
